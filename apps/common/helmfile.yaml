@@ -1,8 +1,0 @@
-releases:
-  - name: identity-common-config
-    chart: ./charts/{{`{{ .Release.Name }}`}}
-    namespace: "{{`{{ .Environment.Name }}`}}"
-    missingFileHandler: Warn
-    values:
-    - config/values.yaml.gotmpl
-    - config/{{`{{ .Environment.Name }}`}}.yaml
