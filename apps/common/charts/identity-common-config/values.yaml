@@ -1,4 +1,0 @@
-commonConfigMap:
-  Identity__AuthorityUrl : ""
-  Serilog__MinimumLevel__Default: "Warning"
-  Zipkin__Host: ""
