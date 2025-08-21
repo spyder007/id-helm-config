@@ -141,10 +141,3 @@ ingress:
       host: auth.mattgerega.net
 
 
-env_name: dev
-
-
-podLabels:
-  spydersoft.io/log: dotnet-serilog
-
-
