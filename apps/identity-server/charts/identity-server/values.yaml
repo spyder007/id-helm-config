@@ -123,21 +123,24 @@ persistence:
     name: postgres-secrets
     enabled: true
 
-ingress:
+route:
   main:
     enabled: true
-    className: nginx
-    annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /
-      nginx.ingress.kubernetes.io/proxy-body-size: 500M
-      kubernetes.io/ingress.class: nginx
-    hosts:
-    - paths:
-      - pathType: Prefix
-        service:
-          identifier: main
-          port: http
-        path: /
-      host: auth.mattgerega.net
+    kind: HTTPRoute
+    parentRefs:
+      - name: main
+        namespace: envoy-gateway-system
+        group: gateway.networking.k8s.io
+        kind: Gateway
+    hostnames:
+    - auth.mattgerega.net
+    rules:
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /
+      backendRefs:
+      - name: main
+        port: 80
 
 
