@@ -140,7 +140,7 @@ route:
           type: PathPrefix
           value: /
       backendRefs:
-      - name: main
+      - identifier: main
         port: 80
 
 
