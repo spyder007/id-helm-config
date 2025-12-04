@@ -39,16 +39,10 @@ configMaps:
       AllowedOrigins__1: "http://localhost:3000"
       {{ end }}
 
-ingress:
+route:
   main:
-    hosts:
-    - paths:
-      - pathType: Prefix
-        service:
-          identifier: main
-          port: http
-        path: /
-      host: auth.{{ .Values.environment_hostname }}
+    hostnames:
+    - auth.{{ .Values.environment_hostname }}
 
 vault:
   environment: {{ .Environment.Name | quote }} 
